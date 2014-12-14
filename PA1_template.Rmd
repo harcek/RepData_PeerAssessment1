@@ -66,7 +66,6 @@ nrow(measured_activity) - sum(complete.cases(measured_activity))
 ####4. Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
 ```{r}
 total_steps_per_day_imputed <- aggregate(measured_activity_imputed$steps, by=list(measured_activity_imputed$date), FUN=sum, na.rm=TRUE)
-str(total_steps_per_day_imputed)
 colnames(total_steps_per_day_imputed) <- c("Day", "Total_Steps")
 total_steps_per_day_imputed$Total_Steps <- as.numeric(as.character(total_steps_per_day_imputed$Total_Steps))
 hist(total_steps_per_day_imputed$Total_Steps, main="Number of steps per day", xlab="Number of steps", ylab="Frequency", breaks = 10)
